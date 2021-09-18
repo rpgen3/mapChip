@@ -25,7 +25,7 @@
         position: 'relative'
     });
     const img = $('<img>').appendTo(hImg);
-    const cover = $('<div>').appnedTo(hImg).css({
+    const cover = $('<div>').appendTo(hImg).css({
         position: 'absolute',
         outline: '3px #4ec4d3',
         'outline-offset': '-3px'
