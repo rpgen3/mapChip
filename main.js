@@ -15,21 +15,6 @@
         'css'
     ].map(v => `https://rpgen3.github.io/mylib/export/${v}.mjs`));
     $('<span>').appendTo(head).text('マップチップを分割');
-    $('<input>').appendTo(body).prop({
-        type: 'file',
-        accept: 'image/*'
-    }).on('change', ({target}) => {
-        img.prop('src', URL.createObjectURL(target.files[0]));
-    });
-    const hImg = $('<div>').appendTo(body).css({
-        position: 'relative'
-    });
-    const img = $('<img>').appendTo(hImg);
-    const cover = $('<div>').appendTo(hImg).css({
-        position: 'absolute',
-        outline: '3px #4ec4d3',
-        'outline-offset': '-3px'
-    });
     const inputColor = rpgen3.addInputStr(body, {
         label: '透過する色',
         save: true,
@@ -44,7 +29,21 @@
         value: 16,
         list: [16, 32, 64, 128, 256]
     });
-    img.on('hover', ({offsetX, offsetY}) => {
+    $('<input>').appendTo(body).prop({
+        type: 'file',
+        accept: 'image/*'
+    }).on('change', ({target}) => {
+        img.prop('src', URL.createObjectURL(target.files[0]));
+    });
+    const hImg = $('<div>').appendTo(body).css({
+        position: 'relative'
+    });
+    const img = $('<img>').appendTo(hImg);
+    const cover = $('<div>').appendTo(hImg).css({
+        position: 'absolute',
+        backgroundColor: 'rgba(255, 0, 0, 0.5)'
+    });
+    img.on('mousemove', ({offsetX, offsetY}) => {
         const unit = inputUnit(),
               left = (offsetX / unit | 0) * unit,
               top = (offsetY / unit | 0) * unit;
