@@ -44,7 +44,8 @@
         });
     });
     const hImg = $('<div>').appendTo(body).css({
-        position: 'relative'
+        position: 'relative',
+        display: 'inline-block'
     });
     const img = $('<img>').appendTo(hImg);
     const cover = $('<div>').appendTo(hImg).css({
